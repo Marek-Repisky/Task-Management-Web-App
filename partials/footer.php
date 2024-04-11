@@ -10,3 +10,5 @@
             <a href="tel:+421999888777" target="_blank">Telefón</a>
         </div>
     </footer>
+</body>
+</html>
