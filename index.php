@@ -26,11 +26,27 @@ require_once('partials/header.php');
     <article class="list">
       <textarea class="txtarea" name="title" id="nadpis" cols="39" rows="1" placeholder="Nadpis..."></textarea>
       <textarea class="txtarea" name="text" id="opis" cols="39" rows="1" placeholder="Opis..."></textarea>
-      <div class="zoznam_riadok">
+      <section class="zoznam_riadok">
         <div class="poradie">1.</div>
         <textarea class="txtarea" name="ls" id="zoznam" cols="39" rows="1" placeholder="Prvok..."></textarea>
-      </div>
-      <button class="pridat_prvok">Pridať</div>
+      </section>
+      <?php
+          function pridatPrvok() {
+            echo '<section class="zoznam_riadok">';
+            echo '<div class="poradie">1.</div>';
+            echo '<textarea class="txtarea" name="ls" id="zoznam" cols="39" rows="1" placeholder="Prvok..."></textarea>';
+            echo '</section>';  
+          }
+          /*if (isset($_GET['pridat'])) {
+              myFunction();
+          }*/
+          if(array_key_exists('pridat',$_POST)){
+            pridatPrvok();
+         }
+        ?>
+      <form method="post">
+        <input type="submit" class="pridat_prvok" name="pridat"></input>
+      </form>
     </article>
   </section>
 

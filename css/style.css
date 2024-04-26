@@ -60,7 +60,6 @@ header {
   gap: 15px;
   min-width: 350px;
   max-width: 550px;
-  overflow: auto;
   padding: 20px;
   min-height: 175px;
   background-color: #DCDCDC;
