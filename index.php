@@ -31,22 +31,24 @@ require_once('partials/header.php');
         <textarea class="txtarea" name="ls" id="zoznam" cols="39" rows="1" placeholder="Prvok..."></textarea>
       </section>
       <?php
-          function pridatPrvok() {
-            echo '<section class="zoznam_riadok">';
-            echo '<div class="poradie">1.</div>';
-            echo '<textarea class="txtarea" name="ls" id="zoznam" cols="39" rows="1" placeholder="Prvok..."></textarea>';
-            echo '</section>';  
-          }
+        require('_inc/functions.php');
           /*if (isset($_GET['pridat'])) {
               myFunction();
           }*/
           if(array_key_exists('pridat',$_POST)){
-            pridatPrvok();
+            for ($i=2; $i<2+3; $i++){
+                pridatFunc($i);
+            }
          }
         ?>
-      <form method="post">
-        <input type="submit" class="pridat_prvok" name="pridat"></input>
-      </form>
+
+        <!--<button class="pridat_prvok">Pridať</input>-->
+        <section class="zoznam_pridat .zoznam_riadok">
+          <form method="post">
+            <input type="number" name="pocet" class="poradie" id="vyberPocet">
+            <input type="submit" name="pridat" value="Pridať riadky" class="pridat_prvok">
+          </form>
+      </section>
     </article>
   </section>
 
