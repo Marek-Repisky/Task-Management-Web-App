@@ -3,11 +3,12 @@ body {
   box-sizing: border-box;
 }
 ul.topnav {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: black;
+  background-color: hsl(158, 95%, 25%);
   position: sticky;
   top: 0;
   font-size: 2em;
@@ -25,7 +26,7 @@ ul.topnav li a {
   text-decoration: none;
 }
 
-ul.topnav li a:hover {background-color: #555;}
+ul.topnav li a:hover {background-color: hsl(158, 95%, 15%);}
 
 ul.topnav li.right {float: right;}
 
@@ -39,7 +40,9 @@ header {
   font-size: 1.4rem;
   letter-spacing: 2px;
   text-align: center;
-  background-color: red;
+  background-color: hsl(0, 0%, 80%);
+  padding: 1px 0;
+  margin-bottom: 1em;
 }
 .button {
   background-color: #04AA6D;
@@ -69,9 +72,6 @@ header {
   gap: 15px;
 }
 .list {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
   min-width: 350px;
   max-width: 550px;
   padding: 20px;
@@ -84,6 +84,7 @@ header {
   border: none;
   border-radius: 25px;
   resize: none;
+  margin: 8px 0;
 }
 .list #nadpis {
   font-size: 2em;
@@ -101,6 +102,7 @@ header {
 .list .zoznam_riadok {
   display: flex;
   flex-direction: row;
+  margin: 8px 0;
 }
 .zoznam_riadok .poradie{
   display: flex;
@@ -110,7 +112,6 @@ header {
   font-size: 1.4em;
   width: 10%;
   text-align: center;
-  line-height: 100%;
   margin-left: 1.5em;
   border-radius: 7px;
 }

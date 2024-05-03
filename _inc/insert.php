@@ -17,6 +17,9 @@
 
         echo nl2br("\n$tit\n $des\n " . "$ls");
     } else echo "ERROR: Hush! Sorry $sql. " .mysqli_error($conn);
+    
         
     mysqli_close($conn);
+    header('Location: ../index.php');
+    exit;
 ?>
