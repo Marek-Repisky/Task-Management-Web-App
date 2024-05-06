@@ -2,27 +2,26 @@ body {
   margin: 0;
   box-sizing: border-box;
 }
-
 ul.topnav {
-  display: flex;
-  justify-content: center;
+  list-style-type: none;
   margin: 0;
   padding: 0;
+  overflow: hidden;
+  background-color: black;
   position: sticky;
   top: 0;
   font-size: 2em;
-  list-style-type: none;
-  overflow: hidden;
-  background-color: black;
+  display: flex;
+  justify-content: center;
 }
 
 ul.topnav li {float: left;}
 
 ul.topnav li a {
   display: block;
-  padding: 14px 16px;
   color: white;
   text-align: center;
+  padding: 14px 16px;
   text-decoration: none;
 }
 
@@ -36,18 +35,31 @@ ul.topnav li.right {float: right;}
 }
 
 header {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 1.4rem;
+  letter-spacing: 2px;
   text-align: center;
+  background-color: red;
 }
 .button {
-  display: inline-block;
-  font-size: 1.3rem;
-  margin-bottom: 25px;
-  padding: 15px 20px;
   background-color: #04AA6D;
   border: none;
   color: white;
+  padding: 15px 20px;
+  display: inline-block;
   cursor: pointer;
+  font-size: 1.3rem;
+  margin-bottom: 25px;
+}
+.button:hover {
+  background-color: #04AA6D;
+  border: none;
+  color: hsla(0, 0%, 50%, .2);
+  padding: 15px 20px;
+  display: inline-block;
+  cursor: pointer;
+  font-size: 1.3rem;
+  margin-bottom: 25px;
 }
 
 .list_wrapper {
@@ -59,11 +71,11 @@ header {
 .list {
   display: flex;
   flex-direction: column;
-  min-height: 175px;
+  gap: 15px;
   min-width: 350px;
   max-width: 550px;
-  gap: 15px;
   padding: 20px;
+  min-height: 175px;
   background-color: #DCDCDC;
   border-radius: 30px;
 }
@@ -75,62 +87,54 @@ header {
 }
 .list #nadpis {
   font-size: 2em;
-  width: 100%;
-  padding: 16px 0 0 10px;
   font-weight: bold;
   text-align: center;
+  padding: 16px 0 0 10px;
+  width: 100%;
 }
 .list #opis {
   font-size: 1.4em;
-  width: 100%;
-  padding: 16px 0 0 10px;
   text-align: justify;
+  padding: 16px 0 0 10px;
+  width: 100%;
 }
 .list .zoznam_riadok {
   display: flex;
-  margin-left: 2em;
+  flex-direction: row;
 }
-.zoznam_riadok .poradie {
+.zoznam_riadok .poradie{
   display: flex;
-  justify-content: center;
   align-items: center;
-  font-size: 1.5em;
-  width: 10%;
+  justify-content: center;
   background-color: hsla(0, 0%, 60%, .5);
-  border: none;
+  font-size: 1.4em;
+  width: 10%;
+  text-align: center;
+  line-height: 100%;
+  margin-left: 1.5em;
   border-radius: 7px;
 }
 
 .zoznam_riadok #zoznam {
-  font-size: 1.4rem;
-  width: 100%;
-  margin-left: 3em;
-  padding: 16px 0 0 10px;
-}
-
-.zoznam_pridat #vyberPocet {
-  -webkit-appearance: none;
-  -moz-appearance: textfield;
-  font-size: 1.3em;
-  margin-left: 1.5em;
-  width: 8%;
-  padding: 16px 0;
-  text-align: center;
-  background-color: hsla(0, 0%, 60%, .5);
-  border: none;
-  border-radius: 7px;
-}
-
-.zoznam_pridat .pridat_prvok {
   font-size: 1.4em;
-  min-width: 18.2em;
-  padding: 10px 0;
-  margin-left: 2.8em;
-  background-color: rgb(4,170,109, .85);
-  border: none;
-  border-radius: 25px;
-  cursor: pointer;
+  text-align: justify;
+  padding: 16px 0 0 10px;
+  margin-left: 3em;
+  width: 100%;
 }
+
+.pridat_prvok {
+  background-color: rgb(4,170,109, .85);
+  font-size: 1.4em;
+  width: 94%;
+  text-align: center;
+  padding: 10px 0;
+  margin-left: 1.5em;
+  border: none;
+  cursor: pointer;
+  border-radius: 25px;
+}
+
 
 footer {
   margin-top: 1000px;
