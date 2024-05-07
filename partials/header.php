@@ -7,6 +7,8 @@
     <meta name="keywords" content="The, best, website">
     <meta name="author" content="A very handsome man">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
+</head>
     <title>ListWebsite</title>
 </head>
 <body>

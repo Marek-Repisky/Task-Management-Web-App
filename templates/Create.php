@@ -5,7 +5,7 @@ require_once('../_inc/functions.php');
   
   <section class="list_wrapper">
     <article class="list">
-      <form action="_inc/insert.php" method="post">
+      <form action="../_inc/insert.php" method="post">
         <textarea class="txtarea nadpis" name="title" cols="39" rows="1" placeholder="Nadpis..."></textarea>
         <textarea class="txtarea opis" name="description" cols="39" rows="1" placeholder="Opis..."></textarea>
         <section class="zoznam_riadok">

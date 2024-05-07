@@ -17,6 +17,6 @@
     } else echo "ERROR: Hush! Sorry $sql. " .mysqli_error($conn);
         
     mysqli_close($conn);
-    header('Location: ../index.php');
+    header('Location: ../templates/Create.php');
     exit;
 ?>

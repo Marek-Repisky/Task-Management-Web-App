@@ -40,7 +40,6 @@
     }
     function ReadFromTable($DbName, $TbName) {
         $conn = new mysqli("localhost", "root", "", $DbName);
-
         if ($conn->connect_error) die("Connection failed: " . $conn->connect_error);
 
         $sql = "SELECT Title, Description, ListItem FROM " .$TbName;
@@ -50,20 +49,20 @@
         // output data of each row
         while($row = $result->fetch_assoc()) {
             echo '<article class="list">';
-                echo '<div class="txtarea nadpis">';
-                    echo $row["Title"]. "<br>";
-                echo '</div>';
+            echo '<div class="txtarea nadpis">';
+            echo $row["Title"]. "<br>";
+            echo '</div>';
 
-                echo '<div class="txtarea opis">';
-                    echo $row["Description"]. "<br>";
-                echo '</div>';
+            echo '<div class="txtarea opis">';
+            echo $row["Description"]. "<br>";
+            echo '</div>';
 
-                echo '<section class="zoznam_riadok">';
-                    echo '<div class="poradie">1.</div>';
-                    echo '<div class="txtarea zoznam">';
-                        echo $row["ListItem"]. "<br>";
-                    echo '</div>';
-                echo '</section>';
+            echo '<section class="zoznam_riadok">';
+            echo '<div class="poradie">1.</div>';
+            echo '<div class="txtarea zoznam">';
+            echo $row["ListItem"]. "<br>";
+            echo '</div>';
+            echo '</section>';
             echo '</article>';
         }
         } else echo "0 results";
