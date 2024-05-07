@@ -1,4 +1,8 @@
 <?php
+    function redirect_homepage(){
+        header("Location: templates/Create.php");
+        die("Nepodarilo sa nájsť Domovskú stránku");
+    }
     function pridatFunc($poc) {
         echo '<section class="zoznam_riadok">';
         echo '<div class="poradie">'.$poc.'.</div>';
@@ -11,16 +15,16 @@
 
         // Check connection
         if ($conn->connect_error) die("Connection failed: " .$conn->connect_error);
-        echo "Connected successfully\n";
+        //echo "Connected successfully\n";
 
         // Create database
         $sql = "CREATE DATABASE IF NOT EXISTS " .$DbName;
-        if ($conn->query($sql) === TRUE) echo "Database" .$DbName. "created successfully";
+        if ($conn->query($sql) === TRUE) ;//echo "Database" .$DbName. "created successfully";
         else echo "Error creating database " .$DbName. ": " . $conn->error;
 
         // Use database
         $sql = "USE " .$DbName;
-        if ($conn->query($sql) === TRUE) echo "Database " . $DbName . " used successfully";
+        if ($conn->query($sql) === TRUE) ;//echo "Database " . $DbName . " used successfully";
         else echo "Error using database " . $DbName . ": " . $conn->error;
 
         // Create table
@@ -30,7 +34,7 @@
         Description TEXT NOT NULL,
         ListItem TEXT)";
         
-        if ($conn->query($sql) === TRUE) echo "Table" .$TbName. "created successfully";
+        if ($conn->query($sql) === TRUE) ;//echo "Table" .$TbName. "created successfully";
         else echo "Error creating table " .$TbName. ": " .$conn->error;
         mysqli_close($conn);
     }
@@ -66,5 +70,20 @@
 
         $conn->close();
     }
+    function GetTitles($DbName, $TbName) {
+        $conn = new mysqli("localhost", "root", "", $DbName);
+        if ($conn->connect_error) die("Connection failed: " . $conn->connect_error);
 
+        $sql = "SELECT Title FROM " .$TbName;
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+        // output data of each row
+        while($row = $result->fetch_assoc()) {
+            echo '<option value='. $row["Title"] .'>';
+        }
+        } else echo "0 results";
+
+        $conn->close();
+    }
 ?>
