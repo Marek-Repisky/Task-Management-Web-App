@@ -7,39 +7,40 @@ ul.topnav {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: black;
+  background-color: hsl(158, 95%, 25%);
   position: sticky;
   top: 0;
   font-size: 2em;
   display: flex;
   justify-content: center;
 }
-
 ul.topnav li {float: left;}
 
 ul.topnav li a {
   display: block;
-  color: white;
+  color: hsl(0, 0%, 100%);
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
 }
-
-ul.topnav li a:hover {background-color: #555;}
+ul.topnav li a:hover {background-color: hsla(158, 95%, 15%);}
 
 ul.topnav li.right {float: right;}
 
-@media screen and (max-width: 600px) {
-  ul.topnav li.right, 
-  ul.topnav li {float: none;}
+@media screen and (max-width: 500px) {
+  ul.topnav {
+    display: flex;
+    flex-direction: column;
+  }
 }
-
 header {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 1.4rem;
   letter-spacing: 2px;
   text-align: center;
-  background-color: red;
+  background-color: hsl(0, 0%, 80%);
+  padding: 1px;
+  margin-bottom: 1em;
 }
 .button {
   background-color: #04AA6D;
@@ -67,11 +68,9 @@ header {
   flex-direction: row;
   justify-content: center;
   gap: 15px;
+  flex-wrap: wrap;
 }
 .list {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
   min-width: 350px;
   max-width: 550px;
   padding: 20px;
@@ -84,18 +83,21 @@ header {
   border: none;
   border-radius: 25px;
   resize: none;
+  margin: 8px 0;
 }
-.list #nadpis {
+.list .nadpis {
   font-size: 2em;
   font-weight: bold;
   text-align: center;
-  padding: 16px 0 0 10px;
+  overflow-x: auto;
+  padding: 10px 0 10px 10px;
   width: 100%;
 }
-.list #opis {
+.list .opis {
   font-size: 1.4em;
   text-align: justify;
-  padding: 16px 0 0 10px;
+  overflow-x: auto;
+  padding: 10px 0 10px 10px;
   width: 100%;
 }
 .list .zoznam_riadok {
@@ -114,22 +116,22 @@ header {
   margin-left: 1.5em;
   border-radius: 7px;
 }
-
-.zoznam_riadok #zoznam {
+.zoznam_riadok .zoznam {
   font-size: 1.4em;
   text-align: justify;
-  padding: 16px 0 0 10px;
   margin-left: 3em;
-  width: 100%;
+  padding: 10px 0 10px 10px;
+  overflow: auto;
+  min-width: 66%;
 }
-
 .pridat_prvok {
-  background-color: rgb(4,170,109, .85);
-  font-size: 1.4em;
+  background-color: hsla(158, 95%, 34%, 0.85);
+  font-size: 1.5em;
   width: 94%;
   text-align: center;
+  letter-spacing: 2px;
   padding: 10px 0;
-  margin-left: 1.5em;
+  margin: 8px 0 8px 1.5em;
   border: none;
   cursor: pointer;
   border-radius: 25px;

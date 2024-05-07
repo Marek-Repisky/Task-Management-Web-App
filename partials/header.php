@@ -8,8 +8,8 @@
 </head>
 <body>
   <ul class="topnav">
-    <li><a class="active" href="index.php">Create</a></li>
-    <li><a href="#">2. Podstranka</a></li>
+    <li><a href="index.php">Create</a></li>
+    <li><a href="Read.php">Read</a></li>
     <li><a href="#">3. Podstranka</a></li>
     <li class="right"><a href="#">4. Podstranka</a></li>
   </ul>

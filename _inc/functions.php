@@ -6,11 +6,8 @@
         echo '</section>';  
     }
     function CreateTable($DbName, $TbName) {
-        $servername = "localhost";
-        $username = "root";
-
         // Create connection
-        $conn = new mysqli($servername, $username);
+        $conn = new mysqli("localhost", "root");
 
         // Check connection
         if ($conn->connect_error) die("Connection failed: " .$conn->connect_error);
@@ -37,27 +34,37 @@
         else echo "Error creating table " .$TbName. ": " .$conn->error;
         mysqli_close($conn);
     }
-    function InsertData($DbName, $TbName) {
-        $conn = mysqli_connect("localhost", "root", "", $DbName);
-        
-        if($conn === false) die("ERROR: Could not connect. " .mysqli_connect_error());
-            
-        // Taking values from the form data
-        $tit =  $_REQUEST['title'];
-        $des = $_REQUEST['description'];
-        $ls =  $_REQUEST['listItem'];
-        
-        $sql = "INSERT INTO " .$TbName. " (Title, Description, ListItem) VALUES ('$tit', '$des', '$ls')"; 
-            
-        if(mysqli_query($conn, $sql)) {
-            echo "<h3>data stored in a database successfully."
-                . " Please browse your localhost php my admin"
-                . " to view the updated data</h3>"; 
-    
-            echo nl2br("\n$tit\n $des\n " . "$ls");
-        } else echo "ERROR: Hush! Sorry $sql. " .mysqli_error($conn);
-            
-        mysqli_close($conn);
+    function ReadFromTable($DbName, $TbName) {
+        $conn = new mysqli("localhost", "root", "", $DbName);
+
+        if ($conn->connect_error) die("Connection failed: " . $conn->connect_error);
+
+        $sql = "SELECT Title, Description, ListItem FROM " .$TbName;
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+        // output data of each row
+        while($row = $result->fetch_assoc()) {
+            echo '<article class="list">';
+                echo '<div class="txtarea nadpis">';
+                    echo $row["Title"]. "<br>";
+                echo '</div>';
+
+                echo '<div class="txtarea opis">';
+                    echo $row["Description"]. "<br>";
+                echo '</div>';
+
+                echo '<section class="zoznam_riadok">';
+                    echo '<div class="poradie">1.</div>';
+                    echo '<div class="txtarea zoznam">';
+                        echo $row["ListItem"]. "<br>";
+                    echo '</div>';
+                echo '</section>';
+            echo '</article>';
+        }
+        } else echo "0 results";
+
+        $conn->close();
     }
 
 ?>
