@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../css/register.css">
     <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
 </head>
-    <title>Registrácia</title>
+    <title>ListWebsite</title>
 </head>
 <body>
   <header>

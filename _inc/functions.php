@@ -1,6 +1,6 @@
 <?php
     function redirect_homepage(){
-        header("Location: templates/Create.php");
+        header("Location: templates/LoginForm.php");
         die("Nepodarilo sa nájsť Domovskú stránku");
     }
     function pridatFunc($poc) {
@@ -28,7 +28,8 @@
             Id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             Title TEXT NOT NULL,
             Description TEXT NOT NULL,
-            ListItem TEXT
+            ListItem TEXT,
+            User_Id INT(6) UNSIGNED NOT NULL
         )";
         
         if ($conn->query($sql) === TRUE) ;//echo "Table" .$tbname. "created successfully";
@@ -37,100 +38,70 @@
     }
     function ReadFromTable() {
         require_once('../config.php');
-        global $conn, $dbname, $tbname;
-
-        $sql = "SELECT Title, Description, ListItem FROM " .$tbname;
-        $result = $conn->query($sql);
-
-        if ($result === false) echo "Error: " . $conn->error;
-        else if ($result->num_rows > 0) {
-        // output data of each row
-            while($row = $result->fetch_assoc()) {
-                echo '<article class="list">';
-                echo '<div class="txtarea nadpis">';
-                echo htmlspecialchars($row["Title"], ENT_QUOTES, 'UTF-8'). "<br>";
-                echo '</div>';
-
-                echo '<div class="txtarea opis">';
-                echo htmlspecialchars($row["Description"], ENT_QUOTES, 'UTF-8'). "<br>";
-                echo '</div>';
-
-                echo '<section class="zoznam_riadok">';
-                echo '<div class="poradie">1.</div>';
-                echo '<div class="txtarea zoznam">';
-
-                echo htmlspecialchars($row["ListItem"], ENT_QUOTES, 'UTF-8'). "<br>";
-                echo '</div>';
-                echo '</section>';
-                echo '</article>';
-            }
+        global $conn, $tbname;
+    
+        if (isset($_COOKIE['User_Id'])) {
+            $user_id = $_COOKIE['User_Id'];
+    
+            $sql = "SELECT Title, Description, ListItem FROM $tbname WHERE User_Id = ?";
+            if ($stmt = $conn->prepare($sql)) {
+                $stmt->bind_param("i", $user_id);
+                $stmt->execute();
+                $result = $stmt->get_result();
+    
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo '<article class="list">';
+                        echo '<div class="txtarea nadpis">';
+                        echo htmlspecialchars($row["Title"], ENT_QUOTES, 'UTF-8') . "<br>";
+                        echo '</div>';
+    
+                        echo '<div class="txtarea opis">';
+                        echo htmlspecialchars($row["Description"], ENT_QUOTES, 'UTF-8') . "<br>";
+                        echo '</div>';
+    
+                        echo '<section class="zoznam_riadok">';
+                        echo '<div class="poradie">1.</div>';
+                        echo '<div class="txtarea zoznam">';
+                        echo htmlspecialchars($row["ListItem"], ENT_QUOTES, 'UTF-8') . "<br>";
+                        echo '</div>';
+                        echo '</section>';
+                        echo '</article>';
+                    }
+                }
+                else echo "Žiadne listy";
+                $stmt->close();
+            } 
+            else echo "Error: " . $conn->error;
         }
-        else echo "Žiadne listy";
-
+        else echo "Please log in to view your lists.";
         $conn->close();
     }
     function GetTitles() {
         require_once('../config.php');
-
-        $sql = "SELECT Title FROM " .$tbName;
-        $result = $conn->query($sql);
-
-        if ($result === false) echo "Error: " . $conn->error;
-        else if ($result->num_rows > 0) {
-            // output data of each row
-            while($row = $result->fetch_assoc()) {
-                $title = htmlspecialchars($row["Title"], ENT_QUOTES, 'UTF-8');
-                echo '<option value='. $title  .'>';
-            }
+        global $tbname;
+    
+        if (isset($_COOKIE['User_Id'])) {
+            $user_id = $_COOKIE['User_Id'];
+    
+            $sql = "SELECT Title FROM $tbname WHERE User_Id = ?";
+            if ($stmt = $conn->prepare($sql)) {
+                $stmt->bind_param("i", $user_id);
+                $stmt->execute();
+                $result = $stmt->get_result();
+    
+                if ($result->num_rows > 0) {
+                    // Output data of each row
+                    while ($row = $result->fetch_assoc()) {
+                        $title = htmlspecialchars($row["Title"], ENT_QUOTES, 'UTF-8');
+                        echo '<option value="' . $title . '">';
+                    }
+                }
+                else echo "No lists found for the logged-in user.";
+                $stmt->close();
+            } 
+            else echo "Error: " . $conn->error;
         }
-        else echo "Žiadne listy";
-
         $conn->close();
     }
-    /*function is_post_request(): bool {
-        return strtoupper($_SERVER['REQUEST_METHOD']) === 'POST';
-    }
-    function redirect_to(string $url): void {
-        header('Location:' . $url);
-        exit;
-    }
-
-    /**
-     * Redirect to a URL with data stored in the items array
-     * @param string $url
-     * @param array $items
-     */
-    /*function redirect_with(string $url, array $items): void {
-        foreach ($items as $key => $value) $_SESSION[$key] = $value;
-        redirect_to($url);
-    }*/
-
-    /**
-     * Redirect to a URL with a flash message
-     * @param string $url
-     * @param string $message
-     * @param string $type
-     */
-    /*function redirect_with_message(string $url, string $message, string $type = FLASH_SUCCESS) {
-        flash('flash_' . uniqid(), $message, $type);
-        redirect_to($url);
-    }*/
-
-    /**
-     * Flash data specified by $keys from the $_SESSION
-     * @param ...$keys
-     * @return array
-     */
-    /*function session_flash(...$keys): array {
-        $data = [];
-        foreach ($keys as $key) {
-            if (isset($_SESSION[$key])) {
-                $data[] = $_SESSION[$key];
-                unset($_SESSION[$key]);
-            }
-            else $data[] = [];
-        }
-
-        return $data;
-    }*/
 ?>

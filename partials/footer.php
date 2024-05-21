@@ -1,4 +1,4 @@
-<script src="scripts/script.js"></script>
+<script src="../scripts/script.js"></script>
 
     <footer>
         <a href="mailto:menoRestauracie@gmail.com" target="_blank">Email</a>

@@ -4,7 +4,7 @@ require_once('../_inc/functions.php');
 ?>
   
   <section class="list_wrapper">
-    <form action="../_inc/register.php" method="post" class="list">
+    <form action="../_inc/login.php" method="post" class="list">
         <h2>Prihlásenie</h2>
         
         <label for="email">Email:</label><br>
