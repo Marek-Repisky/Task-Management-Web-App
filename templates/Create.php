@@ -1,6 +1,7 @@
 <?php
-require_once('../partials/header.php');
+include_once('../partials/header.php');
 require_once('../_inc/functions.php');
+require_once('../config.php');
 ?>
   
   <section class="list_wrapper">
@@ -15,7 +16,7 @@ require_once('../_inc/functions.php');
         <button type="submit" class="pridat_prvok" name="Submit">Vytvoriť</button>
       </form>
       <?php
-      CreateTable("List_Database", "List_Table")
+        CreateTable();
       ?>
     </article>
   </section>

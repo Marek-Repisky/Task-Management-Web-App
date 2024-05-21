@@ -1,22 +1,29 @@
 <?php
-    $conn = mysqli_connect("localhost", "root", "", "List_Database");
-    if($conn === false) die("ERROR: Could not connect. " .mysqli_connect_error());
+    require_once('../config.php');
+    global $conn, $dbname, $tbname;
     
-    $updTit =  $_REQUEST['UpdatedTitle'];
-    $tit =  $_REQUEST['title'];
-    $des = $_REQUEST['description'];
-    $ls =  $_REQUEST['listItem'];
+    $sql = "UPDATE $tbname SET Title=?, Description=?, ListItem=? WHERE Title=?";
     
-    $sql = "UPDATE List_Table SET Title= '$tit', Description= '$des', ListItem= '$ls' WHERE Title= '$updTit'";
+    if ($stmt = mysqli_prepare($conn, $sql)) {
+        mysqli_stmt_bind_param($stmt, "ssss", $tit, $des, $ls, $updTit);
         
-    if(mysqli_query($conn, $sql)) {
-        /*echo "<h3>data stored in a database successfully."
-            . " Please browse your localhost php my admin"
-            . " to view the updated data</h3>"; 
-
-        echo nl2br("\n$tit\n $des\n " . "$ls");*/
-    } else echo "ERROR: Hush! Sorry $sql. " .mysqli_error($conn);
+        $tit = $_REQUEST['title'];
+        $des = $_REQUEST['description'];
+        $ls = $_REQUEST['listItem'];
+        $updTit = $_REQUEST['UpdatedTitle'];
         
+        if (mysqli_stmt_execute($stmt)) {
+            /*echo "<h3>data stored in a database successfully.</h3>"; 
+            echo nl2br("\n$tit\n $des\n " . "$ls");*/
+        }
+        else echo "ERROR: Could not execute $sql. " .mysqli_error($conn);
+        
+        // Close statement
+        mysqli_stmt_close($stmt);
+    }
+    else echo "ERROR: Could not prepare $sql. " .mysqli_error($conn);
+    
+    // Close connection
     mysqli_close($conn);
     header('Location: ../templates/Update.php');
     exit;

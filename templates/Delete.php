@@ -1,5 +1,5 @@
 <?php
-require_once('../partials/header.php');
+include_once('../partials/header.php');
 require_once('../_inc/functions.php');
 ?>
 <div class="selectDiv">
@@ -7,7 +7,7 @@ require_once('../_inc/functions.php');
     <input list="browsers" class="txtarea nadpis" name="UpdatedTitle" placeholder="Nadpis...">
       <datalist id="browsers">
         <?php
-          GetTitles("List_Database", "List_Table")
+          GetTitles();
         ?>
       </datalist>
     <button type="submit" class="button">Vymazať</button>

@@ -1,11 +1,12 @@
 <?php
-require_once('../partials/header.php');
+include_once('../partials/header.php');
 require_once('../_inc/functions.php');
+require_once('../config.php');
 ?>
   
   <section class="list_wrapper">
       <?php
-        ReadFromTable("List_Database", "List_Table")
+        ReadFromTable();
       ?>
   </section>
 

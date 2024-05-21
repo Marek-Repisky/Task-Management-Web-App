@@ -1,19 +1,24 @@
 <?php
-    $conn = mysqli_connect("localhost", "root", "", "List_Database");
-    if($conn === false) die("ERROR: Could not connect. " .mysqli_connect_error());
+    require_once('../config.php');
+    global $conn, $dbname, $tbname;
     
-    $updTit =  $_REQUEST['UpdatedTitle'];
+    // Sanitize user input
+    $updTit = mysqli_real_escape_string($conn, $_REQUEST['UpdatedTitle']);
     
-    $sql = "DELETE FROM List_Table WHERE Title= '$updTit'";
+    $sql = "DELETE FROM $tbname WHERE Title=?";
+    
+    if($stmt = mysqli_prepare($conn, $sql)) {
+        mysqli_stmt_bind_param($stmt, "s", $updTit);
         
-    if(mysqli_query($conn, $sql)) {
-        /*echo "<h3>data stored in a database successfully."
-            . " Please browse your localhost php my admin"
-            . " to view the updated data</h3>"; 
-
-        echo nl2br("\n$tit\n $des\n " . "$ls");*/
-    } else echo "ERROR: Hush! Sorry $sql. " .mysqli_error($conn);
+        if(mysqli_stmt_execute($stmt)) {
+            /*echo "<h3>Data deleted from the database successfully.</h3>";*/
+        }
+        else echo "ERROR: Could not execute $sql. " .mysqli_error($conn);
         
+        mysqli_stmt_close($stmt);
+    }
+    else echo "ERROR: Could not prepare $sql. " .mysqli_error($conn);
+    
     mysqli_close($conn);
     header('Location: ../templates/Delete.php');
     exit;
