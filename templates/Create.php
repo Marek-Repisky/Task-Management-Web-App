@@ -3,8 +3,10 @@
   require_once('../config.php');
   require_once('../_inc/App.php');
 
+  // Load the configuration settings
   $config = include('../config.php');
   $app = new ToDoApp($config);
+  // Get the ToDoList instance from the app
   $toDoList = $app->getToDoList();
 
 ?>

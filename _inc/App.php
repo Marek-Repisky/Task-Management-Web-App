@@ -9,19 +9,27 @@
         private $toDoList;
 
         public function __construct($dbConfig) {
-            $this->db = new Database($dbConfig['servername'], $dbConfig['username'], $dbConfig['password'], $dbConfig['dbname'], $dbConfig['tbname'], $dbConfig['tb2name']);
+            $this->db = new Database(
+                $dbConfig['servername'], 
+                $dbConfig['username'], 
+                $dbConfig['password'], 
+                $dbConfig['dbname'],
+                $dbConfig['tbname'],
+                $dbConfig['tb2name']
+            );
             $this->userAuth = new UserAuth($this->db);
             $this->toDoList = new ToDoList($this->db, $dbConfig['tbname']);
         }
 
         public function run() {
-            // Main logic for running the application
         }
 
+        // Access the UserAuth instance
         public function getUserAuth() {
             return $this->userAuth;
         }
 
+        // Access the ToDoList instance
         public function getToDoList() {
             return $this->toDoList;
         }
