@@ -74,7 +74,7 @@
             } 
             else echo "Error: " . $conn->error;
         }
-        else echo "Please log in to view your lists.";
+        else echo "Prihláste sa prosím aby ste videli vaše listy.";
         $conn->close();
     }
     function GetTitles() {
@@ -97,7 +97,7 @@
                         echo '<option value="' . $title . '">';
                     }
                 }
-                else echo "No lists found for the logged-in user.";
+                else echo "Žiadne listy nenajdené.";
                 $stmt->close();
             } 
             else echo "Error: " . $conn->error;

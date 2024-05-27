@@ -1,34 +1,25 @@
 <?php
-    require_once('../config.php');
-    global $conn, $tbname;
+require_once('../config.php');
+require_once('App.php');
 
-    // Check if User_Id cookie is set
-    if (isset($_COOKIE['User_Id'])) {
-        $user_id = $_COOKIE['User_Id'];
-        
-        // Prepare SQL query with WHERE clause to filter by title and user_id
-        $sql = "UPDATE $tbname SET Title=?, Description=?, ListItem=? WHERE Title=? AND User_Id=?";
-        
-        if ($stmt = mysqli_prepare($conn, $sql)) {
-            $tit = $_REQUEST['title'];
-            $des = $_REQUEST['description'];
-            $ls = $_REQUEST['listItem'];
-            $updTit = $_REQUEST['UpdatedTitle'];
-            
-            mysqli_stmt_bind_param($stmt, "ssssi", $tit, $des, $ls, $updTit, $user_id);
-            
-            if (mysqli_stmt_execute($stmt)) echo "List updated successfully.";
-            else echo "ERROR: Could not execute $sql. " .mysqli_error($conn);
-            
-            // Close statement
-            mysqli_stmt_close($stmt);
-        }
-        else echo "ERROR: Could not prepare $sql. " .mysqli_error($conn);
-    }
-    else echo "Please log in to update your lists.";
+$config = include('../config.php');
+$app = new ToDoApp($config);
+$userAuth = $app->getUserAuth();
+$toDoList = $app->getToDoList();
 
-    mysqli_close($conn);
+if ($userAuth->isAuthenticated()) {
+    $userId = $userAuth->getUserId();
+    $title = $_REQUEST['title'];
+    $description = $_REQUEST['description'];
+    $listItem = $_REQUEST['listItem'];
+    $updatedTitle = $_REQUEST['UpdatedTitle'];
+
+    $toDoList->updateList($title, $description, $listItem, $updatedTitle, $userId);
+    echo "List úspešne aktualizovaný.";
+
     header('Location: ../templates/Update.php');
     exit;
+} else {
+    echo "Prosím prihláste sa aby ste mohli aktualizovať vaše listy.";
+}
 ?>
-

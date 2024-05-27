@@ -1,8 +1,12 @@
 <?php
-    // Expire the cookie by setting its expiration time to the past
-    setcookie('User_Id', '', time() - 3600, '/');
-    echo 'Som tu';
-    header("Location: ../index.php");
-    die("Nepodarilo sa nájsť Domovskú stránku");
-    
+require_once('../config.php');
+require_once('App.php');
+
+$config = include('../config.php');
+$app = new ToDoApp($config);
+$userAuth = $app->getUserAuth();
+
+$userAuth->logoutUser();
+header("Location: ../index.php");
+exit;
 ?>

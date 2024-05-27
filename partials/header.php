@@ -9,15 +9,9 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
     <style>
-      .LogoutImg {
-        width: 32px;
-        height: 32px;
-      }
-      .Link {
-        padding: 19px 16px 0 16px;
-      }
-      .Link:hover {
-        background-color: #024b30;
+      #Link {
+        display: flex;
+        padding-top: 20px;
       }
     </style>
 </head>
@@ -29,7 +23,8 @@
     <li><a href="Read.php">Read</a></li>
     <li><a href="Update.php">Update</a></li>
     <li><a href="Delete.php">Delete</a></li>
-    <a href="../_inc/logout.php" class="Link"><img src="../img/logout.png" alt="Odhlasit" class="LogoutImg"></a>
+    <!-- <li><a href="../_inc/logout.php" class="Link">Odhlasit</a></li> -->
+    <li><a href="../_inc/logout.php" id="Link"><img src="../img/logout.png" alt="Odhlasit" width="32px" height="32px"></a></li>
   </ul>
 
   <header>

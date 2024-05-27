@@ -1,10 +1,15 @@
 <?php
 include_once('../partials/header.php');
-require_once('../_inc/functions.php');
 require_once('../config.php');
+require_once('../_inc/App.php');
+
+$config = include('../config.php');
+$app = new ToDoApp($config);
+$toDoList = $app->getToDoList();
+
 ?>
   
-  <section class="list_wrapper">
+<section class="list_wrapper">
     <article class="list">
       <form action="../_inc/insert.php" method="post">
         <textarea class="txtarea nadpis" name="title" cols="39" rows="1" placeholder="Nadpis..."></textarea>
@@ -15,11 +20,8 @@ require_once('../config.php');
         </section>
         <button type="submit" class="pridat_prvok" name="Submit">Vytvoriť</button>
       </form>
-      <?php
-        CreateTable();
-      ?>
     </article>
-  </section>
+</section>
 
 <?php
   include_once('../partials/footer.php');
