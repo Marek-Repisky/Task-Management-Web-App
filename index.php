@@ -1,4 +1,4 @@
 <?php
-require_once('_inc/functions.php');
-redirect_homepage();
+    header("Location: templates/LoginForm.php");
+    die("Nepodarilo sa nájsť Domovskú stránku");
 ?>

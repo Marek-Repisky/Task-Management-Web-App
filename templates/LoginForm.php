@@ -1,5 +1,5 @@
 <?php
-include_once('../partials/registerHeader.php');
+  include_once('../partials/registerHeader.php');
 ?>
 
 <section class="list_wrapper">
@@ -18,5 +18,5 @@ include_once('../partials/registerHeader.php');
 </section>
 
 <?php
-include_once('../partials/footer.php');
+  include_once('../partials/footer.php');
 ?>

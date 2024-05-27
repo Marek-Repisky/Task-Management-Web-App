@@ -1,12 +1,12 @@
 <?php
-include_once('../partials/header.php');
-require_once('../config.php');
-require_once('../_inc/App.php');
+  include_once('../partials/header.php');
+  require_once('../config.php');
+  require_once('../_inc/App.php');
 
-$config = include('../config.php');
-$app = new ToDoApp($config);
-$toDoList = $app->getToDoList();
-$userAuth = $app->getUserAuth();
+  $config = include('../config.php');
+  $app = new ToDoApp($config);
+  $toDoList = $app->getToDoList();
+  $userAuth = $app->getUserAuth();
 
 ?>
 <div class="selectDiv">
@@ -39,5 +39,5 @@ $userAuth = $app->getUserAuth();
 </section>
 
 <?php
-include_once('../partials/footer.php');
+  include_once('../partials/footer.php');
 ?>

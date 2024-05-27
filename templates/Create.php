@@ -1,11 +1,11 @@
 <?php
-include_once('../partials/header.php');
-require_once('../config.php');
-require_once('../_inc/App.php');
+  include_once('../partials/header.php');
+  require_once('../config.php');
+  require_once('../_inc/App.php');
 
-$config = include('../config.php');
-$app = new ToDoApp($config);
-$toDoList = $app->getToDoList();
+  $config = include('../config.php');
+  $app = new ToDoApp($config);
+  $toDoList = $app->getToDoList();
 
 ?>
   
