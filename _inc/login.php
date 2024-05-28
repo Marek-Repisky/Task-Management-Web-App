@@ -8,7 +8,7 @@
     $userAuth = $app->getUserAuth();
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // // Retrieve and trim the email and password
+        // Retrieve and trim the email and password
         $email = trim($_POST['email']);
         $password = trim($_POST['password']);
 

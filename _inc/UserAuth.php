@@ -34,6 +34,7 @@
                 if (password_verify($password, $user['password'])) {
                     // Set a cookie with the user ID for authentication
                     setcookie("User_Id", $user['id'], time() + (86400 * 30), "/");
+                    return true;
                 }
             }
             return false;
