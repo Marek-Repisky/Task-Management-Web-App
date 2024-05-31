@@ -1,6 +1,7 @@
 <?php
     require_once('Database.php');
 
+    // Managing to-do list operations
     class ToDoList {
         private $db;
         private $tbname;

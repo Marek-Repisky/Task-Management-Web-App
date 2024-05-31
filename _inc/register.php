@@ -8,7 +8,7 @@
     $userAuth = $app->getUserAuth();
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Retrieve and trim the username, email, password and agreement
+        // Retrieve and trim the user details
         $username = trim($_POST['username']);
         $email = trim($_POST['email']);
         $password = trim($_POST['password']);
@@ -18,7 +18,7 @@
         // An array to hold error messages
         $errors = [];
         
-        // Validate the values
+        // Validate the input values
         if (empty($username)) $errors[] = "Prosím zadajte používateľské meno.";
         if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) $errors[] = "Prosím zadajte platný email.";
         if (empty($password)) $errors[] = "Prosím zadajte platné heslo.";

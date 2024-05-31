@@ -1,6 +1,7 @@
 <?php
     require_once('Database.php');
 
+    //  Managing user authentication
     class UserAuth {
         private $db;
 
