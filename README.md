@@ -170,24 +170,9 @@ return [
 4. Test thoroughly
 5. Submit a pull request
 
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
-
 ## Support
 
 For issues or questions:
 - Check the code comments for implementation details
 - Review the class structure in the `_inc/` directory
 - Ensure your PHP and MySQL versions meet the requirements
-
-## Future Enhancements
-
-Potential improvements could include:
-- Multiple list items per list
-- List categories/tags
-- Due dates and reminders
-- List sharing between users
-- Export functionality
-- Rich text editing
-- Mobile app version
