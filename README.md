@@ -1,4 +1,4 @@
-# To-Do List Web Application
+# To-Do List Website
 
 A simple, responsive web-based to-do list application built with PHP and MySQL. Users can register, log in, and manage their personal to-do lists with full CRUD (Create, Read, Update, Delete) functionality.
 
