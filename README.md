@@ -3,7 +3,7 @@
 A simple, responsive web-based to-do list application built with PHP and MySQL. Users can register, log in, and manage their personal to-do lists with full CRUD (Create, Read, Update, Delete) functionality.
 
 <p align="center">
-  <img src="https://github.com/Marek-Repisky/Task-Management-Web-App/blob/main/Home page.png" alt=Home page">
+  <img src="https://github.com/Marek-Repisky/Task-Management-Web-App/blob/main/Home page.png" alt="Home page">
   <br />
   <i>Task Management Home page</i>
 </p>
