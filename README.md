@@ -1,12 +1,12 @@
-# To-Do List Website
+# Task Management
 
 A simple, responsive web-based to-do list application built with PHP and MySQL. Users can register, log in, and manage their personal to-do lists with full CRUD (Create, Read, Update, Delete) functionality.
 
 ## Features
 
 - **User Authentication**: Secure registration and login system with password hashing
-- **Personal Lists**: Each user has their own private to-do lists
-- **CRUD Operations**: Create, read, update, and delete to-do lists
+- **Personal Lists**: Each user has their own private tasks
+- **CRUD Operations**: Create, read, update, and delete tasks
 - **Responsive Design**: Mobile-friendly interface with modern CSS styling
 - **Session Management**: Cookie-based authentication for persistent sessions
 - **Input Validation**: Server-side validation for all user inputs
@@ -106,12 +106,12 @@ The application automatically creates the following tables:
 
 1. **Register**: Visit the application and create a new account
 2. **Login**: Use your credentials to access your personal dashboard
-3. **Create Lists**: Add new to-do lists with titles, descriptions, and items
+3. **Create Lists**: Add new tasks with titles, descriptions, and items
 4. **Manage Lists**: View, update, or delete your existing lists
 
 ### Navigation
 
-- **Create**: Add new to-do lists
+- **Create**: Add new tasks
 - **Read**: View all your existing lists
 - **Update**: Modify existing lists by selecting from a dropdown
 - **Delete**: Remove lists by selecting from a dropdown
